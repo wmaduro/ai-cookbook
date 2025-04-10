@@ -3,6 +3,22 @@ from utils.sitemap import get_sitemap_urls
 
 converter = DocumentConverter()
 
+
+# --------------------------------------------------------------
+# LOCAL PDF
+# --------------------------------------------------------------
+
+# result = converter.convert("/home/maduro/Downloads/Profile.pdf")
+# result = converter.convert("/home/maduro/Downloads/CV_Welerson_Maduro_Android.pdf")
+result = converter.convert("/home/maduro/Downloads/items.pdf")
+
+document = result.document
+markdown_output = document.export_to_markdown()
+json_output = document.export_to_dict()
+print(json_output)
+
+print(markdown_output)
+
 # --------------------------------------------------------------
 # Basic PDF extraction
 # --------------------------------------------------------------
