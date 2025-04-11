@@ -9,10 +9,10 @@ from lancedb.pydantic import LanceModel, Vector
 from openai import OpenAI
 from utils.tokenizer import OpenAITokenizerWrapper
 
-load_dotenv()
+# load_dotenv()
 
 # Initialize OpenAI client (make sure you have OPENAI_API_KEY in your environment variables)
-client = OpenAI()
+# client = OpenAI()
 
 
 tokenizer = OpenAITokenizerWrapper()  # Load our custom tokenizer for OpenAI
@@ -24,7 +24,8 @@ MAX_TOKENS = 8191  # text-embedding-3-large's maximum context length
 # --------------------------------------------------------------
 
 converter = DocumentConverter()
-result = converter.convert("https://arxiv.org/pdf/2408.09869")
+# result = converter.convert("https://arxiv.org/pdf/2408.09869")
+result = converter.convert("/home/maduro/Downloads/CV_Welerson_Maduro_Android.pdf")
 
 
 # --------------------------------------------------------------
@@ -39,6 +40,11 @@ chunker = HybridChunker(
 
 chunk_iter = chunker.chunk(dl_doc=result.document)
 chunks = list(chunk_iter)
+print(chunks)
+for chunk in chunks:
+    print(f'----> {chunk.text}')
+
+len(chunks)    
 
 # --------------------------------------------------------------
 # Create a LanceDB database and table
