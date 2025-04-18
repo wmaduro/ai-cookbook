@@ -10,10 +10,11 @@ converter = DocumentConverter()
 
 # result = converter.convert("/home/maduro/Downloads/Profile.pdf")
 # result = converter.convert("/home/maduro/Downloads/CV_Welerson_Maduro_Android.pdf")
-result = converter.convert("/home/maduro/Downloads/items.pdf")
+result = converter.convert("/home/maduro/Downloads/Welerson_Maduro_CV.md")
+# result = converter.convert("/home/maduro/Downloads/items.pdf")
 
 document = result.document
-markdown_output = document.export_to_markdown()
+markdown_output = document.export_to_text()
 json_output = document.export_to_dict()
 print(json_output)
 

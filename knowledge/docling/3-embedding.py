@@ -89,17 +89,16 @@ processed_chunks = [
         "text": chunk.text,
         "metadata": {
             "filename": chunk.meta.origin.filename,
-            "page_numbers": [1
-                # page_no
-                # for page_no in sorted(
-                #     set(
-                #         prov.page_no
-                #         for item in chunk.meta.doc_items
-                #         for prov in item.prov
-                #     )
-                # )
-            ]
-            # or None
+            "page_numbers": [
+                page_no
+                for page_no in sorted(
+                    set(
+                        prov.page_no
+                        for item in chunk.meta.doc_items
+                        for prov in item.prov
+                    )
+                )
+            ] or None
             ,
             "title": chunk.meta.headings[0] if chunk.meta.headings else None,
         },
